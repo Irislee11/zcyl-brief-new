@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>妆出于澜 vol.1 · 化妆跟练活动</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"PingFang SC","苹方",-apple-system,Helvetica,sans-serif; background:#FFF8F3; color:#2A1810; line-height:1.6; }
+  .header-hero { width:100%; max-width:520px; margin:0 auto; overflow:visible; background:transparent; border-radius:12px; }
+  .header-hero img { width:100%; height:auto; display:block; border-radius:12px; }
+  .container { max-width:820px; margin:0 auto; padding:20px 16px; }
+
+  .intro-card { background:#fff; border-radius:16px; padding:22px 20px; margin-bottom:16px; box-shadow:0 2px 10px rgba(232,90,79,0.08); font-size:15px; line-height:1.9; }
+  .intro-card strong { color:#E85A4F; }
+
+  .info-strip { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:22px; }
+  .info-item { background:#fff; border-radius:14px; padding:14px; text-align:center; box-shadow:0 2px 8px rgba(232,90,79,0.06); }
+  .info-label { font-size:12px; color:#888; margin-bottom:6px; }
+  .info-value { font-size:14px; font-weight:600; }
+  .info-value .num { color:#E85A4F; font-weight:700; }
+
+  .card { background:#fff; border-radius:16px; padding:22px 20px; margin-bottom:16px; box-shadow:0 2px 10px rgba(232,90,79,0.08); }
+  .card-title { font-size:17px; font-weight:700; margin-bottom:14px; display:flex; align-items:center; gap:6px; }
+
+  /* 3 步搞定 */
+  .steps { display:flex; flex-direction:column; gap:14px; }
+  .step { display:flex; gap:14px; align-items:flex-start; }
+  .step-num { flex-shrink:0; width:32px; height:32px; background:#E85A4F; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; }
+  .step-content { flex:1; padding-top:3px; }
+  .step-title { font-size:14px; font-weight:600; margin-bottom:4px; }
+  .step-desc { font-size:13px; color:#555; line-height:1.7; }
+  .highlight { color:#E85A4F; font-weight:600; }
+
+  /* 妆教原片分组 */
+  .group-block { margin-bottom:20px; }
+  .group-block:last-child { margin-bottom:0; }
+  .group-title { font-size:14px; font-weight:700; color:#E85A4F; margin-bottom:2px; }
+  .group-sub { font-size:11px; color:#999; margin-bottom:12px; }
+  .makeup-row { display:flex; gap:12px; flex-wrap:wrap; }
+  .makeup-cell { flex:0 0 auto; width:100px; text-align:center; }
+  .makeup-cell img { width:80px; height:100px; object-fit:cover; border-radius:8px; display:block; margin:0 auto 6px; border:1px solid #F5E4D7; }
+  .cell-title { font-size:12px; font-weight:600; margin-bottom:2px; line-height:1.3; }
+  .cell-sub { font-size:11px; color:#888; margin-bottom:4px; line-height:1.3; }
+  .cell-link { font-size:11px; color:#E85A4F; text-decoration:none; font-weight:500; }
+
+  /* 跟练范式 · 紧凑横排版 */
+  .pattern-section { margin-bottom:14px; }
+  .pattern-section:last-child { margin-bottom:0; }
+  .pattern-section-title { font-size:13px; font-weight:700; color:#E85A4F; margin-bottom:8px; padding-bottom:3px; border-bottom:1.5px solid #FFE5D5; }
+  .pattern-row { display:flex; gap:8px; flex-wrap:wrap; }
+  .pattern-card { flex:1 1 0; min-width:0; background:linear-gradient(135deg,#FFF8F3 0%,#FFF0E5 100%); border:1px solid #FFD4B8; border-radius:8px; padding:10px 8px; }
+  .pattern-card .p-head { display:flex; align-items:center; gap:3px; margin-bottom:5px; }
+  .pattern-card .p-icon { font-size:13px; }
+  .pattern-card .p-name { font-size:12px; font-weight:700; color:#2A1810; }
+  .pattern-card .p-desc { font-size:10px; color:#3D2A1E; line-height:1.5; text-align:left; margin-bottom:6px; }
+  .pattern-card .p-refs { display:flex; gap:4px; }
+  .pattern-card .p-ref-item { display:block; text-decoration:none; }
+  .pattern-card .p-ref-item img { width:60px; height:80px; object-fit:cover; border-radius:5px; border:1px solid #F5E4D7; display:block; }
+  .pattern-card .p-ref-label { font-size:9px; color:#E85A4F; text-align:center; margin-top:2px; font-weight:500; }
+  @media (max-width:600px) { .pattern-grid-2col { grid-template-columns:1fr; } }
+
+  /* CTA */
+  .cta-card { background:linear-gradient(135deg,#FFE5D5 0%,#FFCFB8 100%); border-radius:16px; padding:24px 20px; text-align:center; margin-bottom:16px; }
+  .cta-card h3 { font-size:18px; margin-bottom:10px; }
+  .cta-card p { font-size:14px; line-height:1.8; }
+  .cta-card strong { color:#E85A4F; }
+
+  /* 引用笔记教程 */
+  .guide-img { width:100%; max-width:760px; height:auto; display:block; margin:12px auto; border-radius:10px; border:1px solid #F5E4D7; }
+  .guide-list { list-style:none; padding:0; margin:10px 0 0; }
+  .guide-list li { padding:6px 0; font-size:13px; color:#333; border-bottom:1px dashed #F5E4D7; }
+  .guide-list li:last-child { border:none; }
+  .guide-list .num { display:inline-block; width:22px; height:22px; background:#E85A4F; color:#fff; border-radius:50%; text-align:center; font-size:12px; line-height:22px; margin-right:8px; font-weight:600; }
+
+  .footer { text-align:center; font-size:12px; color:#999; padding:20px 0; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<!-- 头图 -->
+<div class="header-hero">
+  <img src="img/79e0e571fceb47a58783e9170bf6f6cf.jpg" alt="妆出于澜 vol.1">
+</div>
+
+<div class="container">
+
+  <!-- 活动背景 -->
+  <div class="intro-card">
+    「<strong>妆出于澜</strong>」是小红书「<strong>化妆跟练</strong>」系列 IP 的第一棒。使用引用笔记功能，跟着姜乘澜的经典妆教视频，化妆跟练，画出属于自己的妆容 ✨
+  </div>
+
+  <!-- 活动信息 -->
+  <div class="info-strip">
+    <div class="info-item"><div class="info-label">🎁 定向流量激励</div><div class="info-value">单篇最高可得 <span class="num">30w</span> 流量激励</div></div>
+    <div class="info-item"><div class="info-label">📅 活动时间</div><div class="info-value">即日起 ~ <span class="num">9/20</span></div></div>
+    <div class="info-item"><div class="info-label">🎬 内容形式</div><div class="info-value">视频 / 图文</div></div>
+    <div class="info-item"><div class="info-label">✨ 额外权益</div><div class="info-value">@美妆薯 优质笔记翻牌 + 姜乘澜随机空降评论区答疑</div></div>
+  </div>
+
+  <!-- 3 步搞定 -->
+  <div class="card">
+    <div class="card-title">📝 3 步搞定跟练</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">选素材</div>
+          <div class="step-desc">从下面「妆教原片库」挑一个想跟画的妆容，选一种擅长的「跟练范式」</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">用<span class="highlight">引用笔记</span>功能发笔记</div>
+          <div class="step-desc">详细操作看<span class="highlight">文末教程</span></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">带话题 + 用标题格式</div>
+          <div class="step-desc">必带 <span class="highlight">#妆出于澜</span> 话题 · 标题格式建议：<span class="highlight">妆出于澜 | xxxxxx</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 跟练创作灵感 -->
+  <div class="card">
+    <div class="card-title">💡 跟练创作灵感 · 挑一个上手</div>
+
+    <!-- 板块一：跟练怎么练（4个） -->
+    <div class="pattern-section">
+      <div class="pattern-section-title">"跟练"怎么练</div>
+      <div class="pattern-row">
+        <div class="pattern-card">
+          <div class="p-head"><span class="p-icon">⏩</span><span class="p-name">逐帧跟练</span></div>
+          <div class="p-desc">提炼妆教技巧关键帧，步骤展示 2s，"我"跟练 2s，体验快速学会一个化妆技巧的爽感。</div>
+          <div class="p-refs">
+            <a class="p-ref-item" href="https://www.xiaohongshu.com/explore/6a2fd3d7000000001101f1a3" target="_blank">
+              <img src="img/6ffdb933b1d1477c84ad65b0d4a3f486.jpg" alt="外网100w点赞的眼妆技巧" loading="lazy">
+              <div class="p-ref-label">参考1 →</div>
+            </a>
+            <a class="p-ref-item" href="https://www.xiaohongshu.com/explore/6a263321000000001700b602?xsec_token=ABZWoLLBd3j0GGfVxbqxlXhu15sbYJDzVyJnSH_80lkME=&xsec_source=pc_search" target="_blank">
+              <img src="img/3e872aa708614139a16c4a8971dc3860.jpg" alt="手把手跟着姜乘澜学徒手修容法" loading="lazy">
+              <div class="p-ref-label">参考2 →</div>
+            </a>
+          </div>
+        </div>
+        <div class="pattern-card">
+          <div class="p-head"><span class="p-icon">🎬</span><span class="p-name">画中画跟练</span></div>
+          <div class="p-desc">小屏跟原教程，大屏录跟练过程。用自己的口播提炼妆教重点，跟练视频中保留你的语言习惯和个性特点，形成属于你自己风格的化妆跟练视频。</div>
+          <div class="p-refs">
+            <a class="p-ref-item" href="https://www.xiaohongshu.com/explore/6a5f68a10000000001031a7b?xsec_token=ABH7EmD_WGLn29aGkA0Bmn7yfN_ymtrn1RdDTlBX8hDxA=&xsec_source=pc_search" target="_blank">
+              <img src="img/235e4cf825f7422491c6c9d5b4a6cc24.jpg" alt="画中画跟练" loading="lazy">
+              <div class="p-ref-label">参考 →</div>
+            </a>
+          </div>
+        </div>
+        <div class="pattern-card">
+          <div class="p-head"><span class="p-icon">🔍</span><span class="p-name">局部画中画跟练</span></div>
+          <div class="p-desc">只学一技，大屏展示局部跟练过程，小屏展示 @姜乘澜 妆教视频，验证彩妆技法效果。</div>
+          <div class="p-refs">
+            <a class="p-ref-item" href="https://www.xiaohongshu.com/explore/6a33ca6c0000000011015b2a?xsec_token=ABKVVLdDoTAbb1DES9bDkAHGrSLs63hQbM0EknClYDXc4=&xsec_source=pc_search" target="_blank">
+              <img src="img/20998ef393a84eb99509983b5a8e9f25.jpg" alt="局部画中画跟练" loading="lazy">
+              <div class="p-ref-label">参考 →</div>
+            </a>
+          </div>
+        </div>
+        <div class="pattern-card">
+          <div class="p-head"><span class="p-icon">🖼️</span><span class="p-name">实况拼图跟练</span></div>
+          <div class="p-desc">把跟练前后的妆容实况图拼在一起，形成前后对比，展示跟 @姜乘澜 学化妆的变化。</div>
+          <div class="p-refs">
+            <a class="p-ref-item" href="https://www.xiaohongshu.com/explore/694aba68000000001e02d3d3?xsec_token=ABRb6g6GopDogpcb_WIyRVaJ2_A1HljGJtWEyOKR9frdY=&xsec_source=pc_search" target="_blank">
+              <img src="img/8fe31ddcc8814cf18a9c1e868e45f035.jpg" alt="实况拼图参考1" loading="lazy">
+              <div class="p-ref-label">参考1 →</div>
+            </a>
+            <a class="p-ref-item" href="https://www.xiaohongshu.com/explore/6a22a6b2000000000702d7c8?xsec_token=AB8ihEmbxjwetoUVlpho1GF0bIeQ8PPVeqfaE38RHCRVo=&xsec_source=pc_search" target="_blank">
+              <img src="img/4ae704b6f9c14fdb95ddc954b07d1d1e.jpg" alt="实况拼图参考2" loading="lazy">
+              <div class="p-ref-label">参考2 →</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 板块二：课代表怎么练（2个） -->
+    <div class="pattern-section">
+      <div class="pattern-section-title">"课代表"怎么练</div>
+      <div class="pattern-row">
+        <div class="pattern-card">
+          <div class="p-head"><span class="p-icon">📊</span><span class="p-name">我画的 vs 姜乘澜画的</span></div>
+          <div class="p-desc">只跟练一个关键技巧——左脸用自己的老方法，右脸用姜乘澜的化法，一对比，哪个更适合自己，答案就在脸上。</div>
+          <div class="p-refs">
+            <a class="p-ref-item" href="https://www.xiaohongshu.com/explore/6a44e84e000000002103c245?xsec_token=ABTQJm1-K0hD3-Jjv6IA31j9okTkaAWeyaDIWzRDH0NXQ=&xsec_source=pc_search" target="_blank">
+              <img src="img/88402b8804ad4c4b99f924c8abf524bd.jpg" alt="我画的vs姜乘澜参考" loading="lazy">
+              <div class="p-ref-label">参考 →</div>
+            </a>
+          </div>
+        </div>
+        <div class="pattern-card">
+          <div class="p-head"><span class="p-icon">🎯</span><span class="p-name">跟练姜乘澜化妆一技</span></div>
+          <div class="p-desc">拆解姜乘澜化妆技巧，总结关键点结合自己的实践，验证这一彩妆技巧的有效性。</div>
+          <div class="p-refs">
+            <a class="p-ref-item" href="https://www.xiaohongshu.com/explore/6a3cff86000000001503f770?xsec_token=ABXng4yvlcgx6NPq3AYYaEO3h_dENxzUvt-l-I0ZSqNjU=&xsec_source=pc_search" target="_blank">
+              <img src="img/2b07fbf8d8c540888316a84645aa3399.jpg" alt="跟练一技参考" loading="lazy">
+              <div class="p-ref-label">参考 →</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 妆教原片 12 支 -->
+  <div class="card">
+    <div class="card-title">🎨 妆教原片 · 12 支姜乘澜教程</div>
+        <div class="group-block">
+      <div class="group-title">🎯 技巧</div>
+      
+      <div class="makeup-row">
+      <div class="makeup-cell">
+            <img src="img/d595d52f53fc4f6584e23550f8235f7b.jpg" alt="拉长眼型" loading="lazy">
+        <div class="cell-title">拉长眼型</div>
+        
+        <a class="cell-link" href="https://www.xiaohongshu.com/explore/6a0572350000000006022f32?xsec_token=ABx1qQS5mzbbc8kU4XEHNZyrCOEvIiruSxcVD02Ihrtc8=&xsec_source=pc_search" target="_blank">跟练 →</a>
+      </div>
+      <div class="makeup-cell">
+        <img src="img/43dc567d9c214b93b7db6c6a9c2915fb.jpg" alt="发质选妆" loading="lazy">
+        <div class="cell-title">发质选妆</div>
+        
+        <a class="cell-link" href="https://www.xiaohongshu.com/explore/6a0811b9000000000800024e?xsec_token=ABnZUq0FM-BTthHofRprMyKj0hljzn3Nxwb4f8cS7DzSg=&xsec_source=pc_search" target="_blank">跟练 →</a>
+      </div>
+      <div class="makeup-cell">
+        <img src="img/34b0f02e9f664a2f8a42d32860c027b8.jpg" alt="肉肉脸修容" loading="lazy">
+        <div class="cell-title">肉肉脸修容</div>
+        
+        <a class="cell-link" href="https://www.xiaohongshu.com/explore/6a115e83000000003701d87b?xsec_token=ABH4bCzHQdGrdEbyxSCjw7afe75nYg4ZTy1Pus5jdawAM=&xsec_source=pc_search" target="_blank">跟练 →</a>
+      </div>
+      <div class="makeup-cell">
+        <img src="img/dbc0576ca7d0475c81ff468a76e01142.jpg" alt="鼻子修容" loading="lazy">
+        <div class="cell-title">鼻子修容</div>
+        
+        <a class="cell-link" href="https://www.xiaohongshu.com/explore/6a1fd411000000003601e440?xsec_token=ABxnDxRZOeDLD0MTcyOTKCFQ0DgkCsTiMT2ikA5_o95lY=&xsec_source=pc_search" target="_blank">跟练 →</a>
+      </div>
+      <div class="makeup-cell">
+        <img src="img/7757b809a5b94fcdaf390712a5a56d08.jpg" alt="黑眼圈眼袋" loading="lazy">
+        <div class="cell-title">黑眼圈眼袋</div>
+        
+        <a class="cell-link" href="https://www.xiaohongshu.com/explore/6a2e4fb5000000001503d5a6?xsec_token=ABtIChyW7AMDuyfRqljOYLunyKpoXJ2w_NJncj567brtI=&xsec_source=pc_search" target="_blank">跟练 →</a>
+      </div>
+      <div class="makeup-cell">
+        <img src="img/acfd58a91db14b00a53c6b12d7d654c1.jpg" alt="风格判断" loading="lazy">
+        <div class="cell-title">风格判断</div>
+        
+        <a class="cell-link" href="https://www.xiaohongshu.com/explore/6a4df61100000000150271a4?xsec_token=AB6pHy4kRyIJ8-WKOzXWEgMyeRA6a6ViQEanih2GU6S_0=&xsec_source=pc_search" target="_blank">跟练 →</a>
+      </div>
+      </div>
+    </div>
+    <div class="group-block">
+      <div class="group-title">💼 日常实用妆容</div>
+      
+      <div class="makeup-row">
+      <div class="makeup-cell">
+        <img src="img/5d488233c1c644a89c3afed604d704fa.jpg" alt="日常全妆" loading="lazy">
+        <div class="cell-title">日常全妆</div>
+        
+        <a class="cell-link" href="https://www.xiaohongshu.com/explore/6a043da40000000007025c16?xsec_token=AB90101Ze1MIbWk8gFwZ571pZBBmN0YwqTiRRlQ77xxFc=&xsec_source=pc_search" target="_blank">跟练 →</a>
+      </div>
+      <div class="makeup-cell">
+        <img src="img/267b1651f9124682aea58f4ec8ac6b8b.jpg" alt="眼镜妆" loading="lazy">
+        <div class="cell-title">眼镜妆</div>
+        
+        <a class="cell-link" href="https://www.xiaohongshu.com/explore/6a180ca4000000003701d2f6?xsec_token=ABFN_i2eQFfvqJwvyrKP4SdFbUopVEl5BHpvvWJd9a-V4=&xsec_source=pc_search" target="_blank">跟练 →</a>
+      </div>
+      <div class="makeup-cell">
+        <img src="img/9e13d3348c6342109535878caca405ad.jpg" alt="上镜通勤" loading="lazy">
+        <div class="cell-title">上镜通勤</div>
+        
+        <a class="cell-link" href="https://www.xiaohongshu.com/explore/6a27c003000000001603ca41?xsec_token=ABPZL4AABiPf_h2KmGA0_JMnRdNMs63xmnHlVap4ix2u4=&xsec_source=pc_search" target="_blank">跟练 →</a>
+      </div>
+      <div class="makeup-cell">
+        <img src="img/c789f1c241c2400c9013158a8b267e00.jpg" alt="夏日伪素颜" loading="lazy">
+        <div class="cell-title">夏日伪素颜</div>
+        
+        <a class="cell-link" href="https://www.xiaohongshu.com/explore/6a3ccfe1000000001503fdac?xsec_token=ABGJLyfhNv7Ksz69iMwvMuYZ5Q7LCHwAkUIqoQlP4OFe0=&xsec_source=pc_search" target="_blank">跟练 →</a>
+      </div>
+      </div>
+    </div>
+    <div class="group-block">
+      <div class="group-title">🎭 风格妆容</div>
+      
+      <div class="makeup-row">
+      <div class="makeup-cell">
+        <img src="img/2dc034eefe684e399ef8c42aa950ef95.jpg" alt="韩妆速通" loading="lazy">
+        <div class="cell-title">韩妆速通</div>
+        
+        <a class="cell-link" href="https://www.xiaohongshu.com/explore/6a06cf470000000007020e1a?xsec_token=ABEiZ0kOrtkcfMFWT5q5I9ED7FORTSV9B7NVMXZ1igPhg=&xsec_source=pc_search" target="_blank">跟练 →</a>
+      </div>
+      <div class="makeup-cell">
+        <img src="img/4a6a8924db1543a69ca4a73b204dc6e2.jpg" alt="亚裔混血感" loading="lazy">
+        <div class="cell-title">亚裔混血感</div>
+        
+        <a class="cell-link" href="https://www.xiaohongshu.com/explore/6a0acc3f0000000006036788?xsec_token=ABFHG3y_5BYLd4Xfoq3xxr0hCgIOC-eRBoCOnVFTwSttk=&xsec_source=pc_search" target="_blank">跟练 →</a>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 反馈 CTA -->
+  <div class="cta-card">
+    <h3>准备好了吗？</h3>
+    <p>创作完成后，把你的<strong>笔记链接</strong>直接发在对话框反馈给 <strong>@美妆薯</strong> 即可 ✨</p>
+  </div>
+
+  <!-- 引用笔记功能教程 -->
+  <div class="card">
+    <div class="card-title">📖 引用笔记功能使用方法</div>
+    <div style="font-size:13px; color:#666; margin-bottom:8px;">7 步跟着操作，从打开原片到发布跟练笔记全流程 👇</div>
+    <img class="guide-img" src="img/ea23aa833f9a417f968f65f35ed5593a.jpg" alt="引用笔记功能操作步骤">
+    <ol class="guide-list">
+      <li><span class="num">1</span>打开姜乘澜的妆教原片 → 点击右上角<strong>分享图标</strong></li>
+      <li><span class="num">2</span>底部工具栏点击「<strong>引用发笔记</strong>」</li>
+      <li><span class="num">3</span>选择「<strong>从相册选择</strong>」你的跟练素材</li>
+      <li><span class="num">4</span>勾选图片/视频 → 下一步</li>
+      <li><span class="num">5</span>用滤镜/文字/贴纸美化 → 下一步</li>
+      <li><span class="num">6</span>填正文 + 加话题 <strong>#妆出于澜</strong> → 发布</li>
+      <li><span class="num">7</span>发布成功后确认页面显示「<strong>引用笔记</strong>」标识 ✅</li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    妆出于澜 vol.1 · 化妆跟练活动<br>
+    2026 · 小红书美妆薯出品
+  </div>
+
+</div>
+
+</body>
+</html>
